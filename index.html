@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="game">
+    <div class="header">
+      <div class="title">
+        <h1>ROCK<br>PAPER<br>SCISSORS</h1>
+      </div>
+      <div class="score-box">
+        <p>SCORE</p>
+        <h2 id="score">0</h2>
+      </div>
+    </div>
+
+
+    <div class="pentagon-container">
+      <button class="choice" id="paper">✋</button>
+      <button class="choice" id="scissors">✌️</button>
+      <button class="choice" id="rock">✊</button>
+    </div>
+
+    <button class="rules-btn" onclick="toggleRules()">RULES</button>
+
+
+    <div id="rules-modal" class="rules-modal hidden">
+      <div class="rules-content">
+        <h3>Game Rules</h3>
+        <p>🪨 Rock beats ✌️ Scissors</p> 
+        <p>✋ Paper beats 🪨 Rock</p>
+        <p>✌️ Scissors beats ✋ Paper</p>
+        <button onclick="toggleRules()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
