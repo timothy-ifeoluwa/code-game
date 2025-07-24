@@ -1,4 +1,10 @@
 const scoreEl = document.getElementById("score");
+const resultSection = document.getElementById("result-section");
+const resultText = document.getElementById("result-text");
+const userChoiceSpan = document.getElementById("user-choice");
+const computerChoiceSpan = document.getElementById("computer-choice");
+const playAgainBtn = document.getElementById("play-again");
+
 let score = 0;
 
 const choices = ["rock", "paper", "scissors"];
@@ -13,18 +19,32 @@ document.querySelectorAll(".choice").forEach(button => {
     const playerChoice = button.id;
     const computerChoice = choices[Math.floor(Math.random() * 3)];
 
-    if (playerChoice === computerChoice) {
-      alert(`Draw! You both chose ${playerChoice}`);
-    } else if (rules[playerChoice] === computerChoice) {
-      alert(`You win! ${playerChoice} beats ${computerChoice}`);
-      score++;
-    } else {
-      alert(`You lose! ${computerChoice} beats ${playerChoice}`);
-      score = score > 0 ? score - 1 : 0;
-    }
-
-    scoreEl.textContent = score;
+    showResult(playerChoice, computerChoice);
   });
+});
+
+function showResult(player, computer) {
+  let result;
+
+  if (player === computer) {
+    result = "It's a Draw!";
+  } else if (rules[player] === computer) {
+    result = "You Win!";
+    score++;
+  } else {
+    result = "You Lose!";
+    score = score > 0 ? score - 1 : 0;
+  }
+
+  scoreEl.textContent = score;
+  resultText.textContent = result;
+  userChoiceSpan.textContent = player;
+  computerChoiceSpan.textContent = computer;
+  resultSection.classList.remove("hidden");
+}
+
+playAgainBtn.addEventListener("click", () => {
+  resultSection.classList.add("hidden");
 });
 
 function toggleRules() {
